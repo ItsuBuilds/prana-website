@@ -30,7 +30,7 @@ export default function Hero() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/15" />
+      <div className="absolute inset-0 bg-black/25" />
 
       {/* Content */}
       <div className="relative z-10 flex min-h-screen w-full -translate-y-6 flex-col items-center justify-center px-6 text-center">
