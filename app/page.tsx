@@ -4,6 +4,7 @@ import About from "@/components/about/About";
 import Gallery from "@/components/gallery/Gallery";
 import FeaturedMenu from "@/components/menu/Menu";
 import Evening from "@/components/evening/Evening";
+import Reservation from "@/components/Reservation/Reservation";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Gallery />
       <FeaturedMenu />
       <Evening />
+      <Reservation />
     </>
   );
 }
