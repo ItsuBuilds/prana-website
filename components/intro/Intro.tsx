@@ -1,46 +1,68 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import Image from "next/image";
+import { useLayoutEffect } from "react";
+import { createIntroAnimation } from "./IntroAnimation";
+import { useRef } from "react";
+import IntroText from "./IntroText";
 
 export default function Intro() {
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
+const taglineRef = useRef<HTMLParagraphElement>(null);
+const textContainerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=2500",
-          pin: true,
-          scrub: true,
-        },
-      });
+  return createIntroAnimation({
+    section: sectionRef,
+    title: titleRef,
+    image: imageRef,
+    overlay: overlayRef,
 
-      tl.to("#intro-title", {
-        scale: 0.35,
-        y: -180,
-        letterSpacing: "0.05em",
-        ease: "none",
-        duration: 2,
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    subtitle: subtitleRef,
+    tagline: taglineRef,
+    textContainer: textContainerRef,
+  });
+}, []);
 
   return (
     <section
       ref={sectionRef}
       className="relative h-screen overflow-hidden bg-black"
     >
-      <div className="flex h-full items-center justify-center">
+      {/* Rooftop Image */}
+      <div
+        ref={imageRef}
+        className="absolute inset-0 scale-110 opacity-0"
+      >
+        <Image
+          src="/images/intro/prana-night.webp"
+          alt="Prana Rooftop"
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
+
+      {/* Dark Overlay */}
+      <div
+        ref={overlayRef}
+        className="absolute inset-0 bg-black/80"
+      />
+
+      <IntroText
+  ref={textContainerRef}
+  subtitleRef={subtitleRef}
+  taglineRef={taglineRef}
+/>
+
+      {/* Content */}
+      <div className="relative z-10 flex h-full items-center justify-center">
         <h1
-          id="intro-title"
+          ref={titleRef}
           className="font-serif text-[14vw] font-bold tracking-[0.25em] text-white"
         >
           PRANA
