@@ -4,7 +4,7 @@ import Intro from "@/components/intro/Intro";
 import About from "@/components/about/About";
 import SignatureMenu from "@/components/menu/SignatureMenu";
 import Reviews from "@/components/reviews/Reviews";
-import Reservation from "@/components/Reservation/Reservation";
+import Reservation from "@/components/reservation/Reservation";
 import Footer from "@/components/footer/Footer";
 
 export default function Home() {
