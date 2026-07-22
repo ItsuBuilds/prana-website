@@ -36,34 +36,38 @@ export function createIntroAnimation({
     });
 
     tl.to(title.current, {
-      scale: 0.35,
-      y: -180,
-      letterSpacing: "0.05em",
-      ease: "none",
-      duration: 2,
-    })
+  scale: 0.35,
+  y: -180,
+  letterSpacing: "0.05em",
+  ease: "none",
+  duration: 2,
+})
 
-      .to(
-        image.current,
-        {
-          opacity: 1,
-          scale: 1,
-          ease: "none",
-          duration: 2,
-        },
-        0.3
-      )
+.to(
+  image.current,
+  {
+    opacity: 1,
+    scale: 1,
+    duration: 2,
+    ease: "none",
+  },
+  0.2
+)
 
-      .to(
-        overlay.current,
-        {
-          backgroundColor: "rgba(0,0,0,0.25)",
-          ease: "none",
-          duration: 2,
-        },
-        0.3
-      )
-      .fromTo(
+.to(
+  overlay.current,
+  {
+    backgroundColor: "rgba(0,0,0,0.25)",
+    duration: 2,
+    ease: "none",
+  },
+  0.2
+)
+
+// Give the image time to breathe
+.to({}, { duration: 0.4 })
+
+.fromTo(
   subtitle.current,
   {
     opacity: 0,
@@ -72,17 +76,16 @@ export function createIntroAnimation({
   {
     opacity: 1,
     y: 0,
-    duration: 1.2,
-    ease: "power3.out",
-  },
-  1.4
+    duration: 1,
+    ease: "power2.out",
+  }
 )
 
 .fromTo(
   tagline.current,
   {
     opacity: 0,
-    y: 20,
+    y: 25,
   },
   {
     opacity: 1,
@@ -90,17 +93,46 @@ export function createIntroAnimation({
     duration: 0.8,
     ease: "power2.out",
   },
-  2
+  "<0.15"
 )
 
+// Hold the text
+.to({}, { duration: 0.8 })
+
+// Image keeps moving
+.to(
+  image.current,
+  {
+    scale: 1.08,
+    yPercent: -8,
+    duration: 2,
+    ease: "none",
+  }
+)
+
+// Fade text slowly
 .to(
   textContainer.current,
   {
     opacity: 0,
-    duration: 0.8,
+    y: -40,
+    duration: 1,
+    ease: "power2.out",
   },
-  2.8
-);;
+  "<"
+)
+
+// Darken slightly for transition
+.to(
+  overlay.current,
+  {
+    backgroundColor: "rgba(0,0,0,0.45)",
+    duration: 1,
+    ease: "none",
+  },
+  "<"
+);
+
   }, section);
 
   return () => ctx.revert();
