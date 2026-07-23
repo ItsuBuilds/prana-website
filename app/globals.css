@@ -19,7 +19,7 @@
   }
 }
 
- @keyframes kenburns {
+@keyframes kenburns {
   from {
     transform: scale(1);
   }
@@ -28,7 +28,8 @@
     transform: scale(1.08);
   }
 }
- @keyframes grow {
+
+@keyframes grow {
   from {
     width: 0;
   }
@@ -37,7 +38,8 @@
     width: 180px;
   }
 }
- @keyframes goldLine {
+
+@keyframes goldLine {
   from {
     width: 0;
   }
@@ -50,7 +52,7 @@
 @keyframes logoIn {
   from {
     opacity: 0;
-    transform: scale(.8);
+    transform: scale(0.8);
   }
 
   to {
@@ -70,11 +72,21 @@
     transform: translateY(0);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
-html {
-  scroll-behavior: smooth;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Cormorant_Garamond, Jost } from "next/font/google";
-import Parallax from "@/components/animations/Parallax";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -27,23 +26,23 @@ export default function Hero() {
       {/* Background */}
 
       <motion.div
-  initial={{ scale: 1.2 }}
-  animate={{ scale: 1.05 }}
-  transition={{
-    duration: 35,
-    ease: "linear",
-  }}
-  className="absolute inset-0"
->
-  <Image
-    src="/images/hero/hero-bg.webp"
-    alt="Rooftop dining view over Ranchi skyline"
-    fill
-    priority
-    sizes="100vw"
-    className="object-cover object-[20%_center]"
-  />
-</motion.div>
+        initial={{ scale: 1.2 }}
+        animate={{ scale: 1.05 }}
+        transition={{
+          duration: 35,
+          ease: "linear",
+        }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/images/hero/hero-bg.webp"
+          alt="Rooftop dining view over Ranchi skyline"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[20%_center]"
+        />
+      </motion.div>
 
       {/* Overlay */}
 
@@ -55,13 +54,13 @@ export default function Hero() {
 
       {/* Gold Glow */}
 
-      <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-300/10 blur-[170px]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-300/10 blur-[120px]" />
+      </div>
 
       {/* Hero */}
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
-
-        {/* Badge */}
 
         <motion.span
           initial={{ opacity: 0, y: 35 }}
@@ -76,8 +75,6 @@ export default function Hero() {
           Rooftop • Fine Dine • Live Music
         </motion.span>
 
-        {/* Heading */}
-
         <motion.h1
           initial={{ opacity: 0, y: 45 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,12 +85,10 @@ export default function Hero() {
           }}
           className="mt-8 max-w-5xl font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.03] text-white sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          Experience Ranchi's
+          Experience Ranchi&apos;s
           <br />
           Finest Rooftop Dining
         </motion.h1>
-
-        {/* Description */}
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -109,8 +104,6 @@ export default function Hero() {
           cocktails, live music and breathtaking rooftop views, creating an
           unforgettable dining experience.
         </motion.p>
-
-        {/* Buttons */}
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}

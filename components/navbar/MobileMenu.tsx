@@ -7,7 +7,6 @@ import { navLinks } from "@/data/navLinks";
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -25,29 +24,31 @@ export default function MobileMenu() {
       {/* Hamburger */}
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden text-white z-50"
+        className="z-50 text-white lg:hidden"
       >
         <Menu size={30} />
       </button>
 
-      {/* Dark Background */}
+      {/* Overlay */}
       <div
         onClick={() => setOpen(false)}
         className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
           open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
       />
 
       {/* Sliding Panel */}
       <aside
-        className={`fixed right-0 top-0 z-50 h-screen w-[85%] max-w-[380px]
-        bg-[#111111]/95 backdrop-blur-2xl border-l border-white/10
+        className={`fixed inset-y-0 right-0 z-50
+        w-[320px] max-w-[80vw]
+        overflow-y-auto
+        border-l border-white/10
+        bg-[#111111]/95
+        backdrop-blur-2xl
         transition-transform duration-500 ease-out
-        ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        ${open ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex h-full flex-col">
 
@@ -59,14 +60,14 @@ export default function MobileMenu() {
                 PRANA
               </h2>
 
-              <p className="mt-1 text-xs tracking-[0.2em] text-white/50 uppercase">
+              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/50">
                 Rooftop Dining
               </p>
             </div>
 
             <button
-                onClick={() => setOpen(true)}
-              className="text-white transition hover:rotate-90 duration-300"
+              onClick={() => setOpen(false)}
+              className="text-white transition duration-300 hover:rotate-90"
             >
               <X size={30} />
             </button>

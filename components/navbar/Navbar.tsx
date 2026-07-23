@@ -26,9 +26,9 @@ export default function Navbar() {
 
   return (
     <header
-      ref={navRef}
-      className="fixed inset-x-0 top-4 z-50 px-5"
-    >
+  ref={navRef}
+  className="fixed inset-x-0 top-4 z-50 overflow-x-hidden px-5"
+>
       <div
         className={`mx-auto flex w-full max-w-[1450px] items-center rounded-full border transition-all duration-500 ease-out ${
           isScrolled
